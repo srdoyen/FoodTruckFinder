@@ -1,19 +1,27 @@
-
 var map;
-function initialize() {
+function initialize(loc) {
 	
-	
-	
-	x = 38.674014;
-	y = -121.139847;
-	
+	/*var geocoder =  new google.maps.Geocoder();
+    geocoder.geocode( { 'address': 'folsom, us'}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+			  console.log("location : " + results[0].geometry.location.lat() + " " +results[0].geometry.location.lng());
+            x =results[0].geometry.location.lat(); 
+			y=results[0].geometry.location.lng(); 
+			  
+          } else {
+            alert("Something got wrong " + status);
+          }
+        });*/
+		
+	x=38;
+	y=-122;
 	var prop = {
 		center:new google.maps.LatLng(x,y),
 		zoom:12,
 		mapTypeId:google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map"), prop);
-	
+	/*
 	//Listen for click on map
 		google.maps.event.addListener(map, 'click', 
 			function(event) {
@@ -30,7 +38,7 @@ function initialize() {
 			},
 			{
 				  coords:{lat:38.684014, lng:-121.130847},
-				  content:'<h1>YOUR MOM</h1>'
+				  content:loc
 			},
 			{
 				coords:{lat:38.689014, lng:-121.134847}
@@ -64,18 +72,15 @@ function initialize() {
 				});
 				}
 
-			}
+			}*/
 	return map;
 }
 
-setTimeout(function(){
-	map = initialize();
-
-	},500);
-
-function w3Load(){
+function loadMap(){
 	document.getElementById("map").style.display = 'block';
-	google.maps.event.trigger(map, 'resize');
+	var loc = $("#location").val();
+    $("#location").attr("value", loc);
+	map = initialize(loc);
 }
 /*
 // Initialize and add the map

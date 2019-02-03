@@ -25,8 +25,8 @@
 	<form class="searchForm">
 	  <div class="form-group">
 		<label for="restaurantName">City</label>
-		<input type="text" class="form-control" id="restaurantName" aria-describedby="emailHelp" placeholder="Enter Location">
-		<small id="emailHelp" class="form-text text-muted"></small>
+		<input type="text" class="form-control" id="location" aria-describedby="emailHelp" placeholder="Enter Location">
+
 	  </div>
 	  <div class="form-check form-check-inline">
 		  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
@@ -45,7 +45,7 @@
 	</form>
 	  
 	  <div id="map" class="map-canvas"></div>
-      	  <button onclick="w3Load()" class="btn btn-primary">Load The Map</button>
+      	  <button onclick="loadMap()" class="btn btn-primary">Load The Map</button>
 
     
     <!--Load the API from the specified URL

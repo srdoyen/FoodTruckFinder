@@ -1,27 +1,56 @@
-var map;
-function initialize(loc) {
+
+function httpGetAsync()
+{
+    $.ajax({
+    url: "https://data.sfgov.org/resource/bbb8-hzi6.json",
+    type: "GET",
+    data: {
+      "$limit" : 5000,
+      "$$app_token" : "s4Ajzfw3YfIJ2by09eoY67yg0"
+    }
+	}).done(function(data) {
+	  alert("Retrieved " + data.length + " records from the dataset!");
+	  console.log(data);
+	});
+}
+
+
+
+function mapping(loc) {
 	
-	/*var geocoder =  new google.maps.Geocoder();
-    geocoder.geocode( { 'address': 'folsom, us'}, function(results, status) {
+	return new Promise(function(resolve,reject) 
+	{	
+		var geocoder =  new google.maps.Geocoder();
+		geocoder.geocode( { 'address': loc + ', us'}, function(results, status) 
+		{
           if (status == google.maps.GeocoderStatus.OK) {
 			  console.log("location : " + results[0].geometry.location.lat() + " " +results[0].geometry.location.lng());
-            x =results[0].geometry.location.lat(); 
-			y=results[0].geometry.location.lng(); 
-			  
+            var x = results[0].geometry.location.lat(); 
+			var y = results[0].geometry.location.lng(); 
+			resolve([x,y]);
           } else {
             alert("Something got wrong " + status);
+			  resolve('fail');
           }
-        });*/
-		
-	x=38;
-	y=-122;
+        });
+	});
+
+}
+
+var map;
+async function initialize(loc) {
+	z = await mapping(loc);
+	//console.log(populate());
+	body = await httpGetAsync();
+	console.log(body);
+	
 	var prop = {
-		center:new google.maps.LatLng(x,y),
+		center:new google.maps.LatLng(z[0],z[1]),
 		zoom:12,
 		mapTypeId:google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map"), prop);
-	/*
+	
 	//Listen for click on map
 		google.maps.event.addListener(map, 'click', 
 			function(event) {
@@ -72,7 +101,7 @@ function initialize(loc) {
 				});
 				}
 
-			}*/
+			}
 	return map;
 }
 

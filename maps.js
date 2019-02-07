@@ -4,13 +4,13 @@ function httpGetAsync(coordinates)
 	
 	return new Promise(function(resolve,reject) 
 	{	
-		myUrl = "https://data.sfgov.org/resource/bbb8-hzi6.json?$where=within_circle(location_2, " + coordinates[0] + ", " + coordinates[1] + ", 1000)";
+		myUrl = "https://data.sfgov.org/resource/bbb8-hzi6.json?$where=within_circle(location_2, " + coordinates[0] + ", " + coordinates[1] + ", 2000)";
 		console.log(myUrl);
 		$.ajax({
 		url: myUrl,
 		type: "GET",
 		data: {
-		  "$limit" : 10,
+		  "$limit" : 20,
 		  "$$app_token" : "s4Ajzfw3YfIJ2by09eoY67yg0",
 		}
 		}).done(function(data) {
@@ -31,7 +31,7 @@ async function initialize(loc) {
 	
 	var prop = {
 		center:new google.maps.LatLng(coordinates[0],coordinates[1]),
-		zoom:15,
+		zoom:14,
 		mapTypeId:google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map"), prop);
@@ -47,22 +47,58 @@ async function initialize(loc) {
 		
 		// Array of markers
 		var markers = new Array(foodTrucks.length);
-	
-		for (var i = 0; i < markers.length; i++)
+		var tracker = new Array(foodTrucks.length);
+		var meas=0;
+		for (var i = 0; meas < 5 && i < markers.length; i++)
 		{
-			markers[i] = 
+			if(i>0)
 			{
-				coords:{lat:parseFloat(foodTrucks[i].latitude), lng: parseFloat(foodTrucks[i].longitude)},
-				content: foodTrucks[i].applicant
+				if(tracker.includes(foodTrucks[i].applicant) == false)
+				{
+					markers[i] = 
+					{
+						coords:{lat:parseFloat(foodTrucks[i].latitude), lng: parseFloat(foodTrucks[i].longitude)},
+						content: foodTrucks[i].applicant
+					}
+					tracker[meas] = foodTrucks[i].applicant;
+					var tab = "tab" + meas.toString();
+					var desc = "desc" + meas.toString();
+					document.getElementById(tab).innerHTML = foodTrucks[i].applicant;
+					document.getElementById(desc).innerHTML = foodTrucks[i].optionaltext
+					meas = meas+1;
+					addMarker(markers[i]);
+										
+				}
 			}
+			else
+			{
+				markers[i] = 
+				{
+					coords:{lat:parseFloat(foodTrucks[i].latitude), lng: parseFloat(foodTrucks[i].longitude)},
+					content: foodTrucks[i].applicant
+				}
+			
+				tracker[meas] = foodTrucks[i].applicant;
+				var tab = "tab" + meas.toString();
+				var desc = "desc" + meas.toString();
+				document.getElementById(tab).innerHTML = foodTrucks[i].applicant;
+				document.getElementById(desc).innerHTML = foodTrucks[i].optionaltext
+				meas = meas+1;
+				addMarker(markers[i]);
+
+			}
+			
+			
+				
+
 		}
 			
 		
 	
-		for(var i = 0; i < markers.length; i++) {
+		/*for(var i = 0; i < markers.length; i++) {
 			//coor = {foodTrucks[i].latitude, foodTrucks[i].longitude}
 			addMarker(markers[i]);
-		}
+		}*/
 
 			function addMarker(props){
 				var marker = new google.maps.Marker({

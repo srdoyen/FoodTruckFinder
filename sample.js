@@ -1,10 +1,18 @@
 var map;
 
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}
+
 function loadMap(){
 	document.getElementById("map").style.display = 'block';
+	
 	var loc = $("#location").val();
     $("#location").attr("value", loc);
 	initMap();
+	
+	
 }
 
 function initMap() {
@@ -66,3 +74,4 @@ function createMarkers(places) {
   }
   map.fitBounds(bounds);
 }
+

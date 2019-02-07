@@ -24,3 +24,6 @@ width: 80%;  /* The width is the width of the web page */
 	display: none
 }
 
+.foodList {
+	margin-right: 50px;
+}

@@ -1,2 +1,2 @@
 # FoodTruckFinder
-![alt text](https://github.com/srdoyen/FoodTruckFinder/tree/master/public/images/Results.png)
+![alt text](https://github.com/srdoyen/FoodTruckFinder/blob/master/public/images/Results.png)

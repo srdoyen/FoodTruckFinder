@@ -27,3 +27,7 @@ width: 80%;  /* The width is the width of the web page */
 .foodList {
 	margin-right: 50px;
 }
+
+p {
+	color: grey;
+}

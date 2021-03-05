@@ -20,90 +20,91 @@
 	  
   </head>
   <body>
-    <!--The div element for the map -->
-    <h1>SF Food Truck Search</h1>
-	  
-	<!--BOOTSTRAP FORM-->
-	<div class="row">
+	  <div class="container">
+		<!--The div element for the map -->
+		<h1>SF Food Truck Search</h1>
 		
-		<div class="col-md-6 col-sm-12">
-		<form class="searchForm">
-		  <div class="form-group">
-			<label for="restaurantName">Street</label>
-			<input type="text" class="form-control" id="location" aria-describedby="emailHelp" placeholder="Enter Location">
-			<p>(Example: 123 Main St)</p>
-		  </div>
-		  
-		  <div class="form-check form-check-inline">
-			  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-			  <label class="form-check-label" for="inlineCheckbox1">Gluten Free</label>
-			</div>
-			<div class="form-check form-check-inline">
-			  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-			  <label class="form-check-label" for="inlineCheckbox2">Vegan</label>
-			</div>
-			<div class="form-check form-check-inline">
-			  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-			  <label class="form-check-label" for="inlineCheckbox2">Vegetarian</label>
-			</div>
-			<div></div>
-
-
-		</form>
-
-		  <button onclick="loadMap()" class="btn btn-primary">Load The Map</button>
-			<div id="map" class="map-canvas"></div>
-		  </div>
-
-		
-		<div class="col-md-6 col-sm-12">
-		<ul class="list-unstyled foodList">
-		  <li class="media">
+		<!--BOOTSTRAP FORM-->
+		<div class="row">
 			
-			<div class="media-body">
-			  <h5 class="mt-0 mb-1" id="tab0"></h5>
-				<p id="desc0"></p>
+			<div class="col-md-6 col-sm-12">
+			<form class="searchForm">
+			<div class="form-group">
+				<label for="restaurantName">Street</label>
+				<input type="text" class="form-control" id="location" aria-describedby="emailHelp" placeholder="Enter Location">
+				<p>(Example: 123 Main St)</p>
 			</div>
-		  </li>
-		  <li class="media">
 			
-			<div class="media-body">
-			  <h5 class="mt-0 mb-1" id="tab1"></h5>
-				<p id="desc1"></p>
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+				<label class="form-check-label" for="inlineCheckbox1">Gluten Free</label>
+				</div>
+				<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+				<label class="form-check-label" for="inlineCheckbox2">Vegan</label>
+				</div>
+				<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+				<label class="form-check-label" for="inlineCheckbox2">Vegetarian</label>
+				</div>
+				<div></div>
+
+
+			</form>
+
+			<button onclick="loadMap()" class="btn btn-primary">Load The Map</button>
+				<div id="map" class="map-canvas"></div>
 			</div>
-		  </li>
+
+			
+			<div class="col-md-6 col-sm-12">
+			<ul class="list-unstyled foodList">
 			<li class="media">
-			
-			<div class="media-body">
-			  <h5 class="mt-0 mb-1" id="tab2"></h5>
-				<p id="desc2"></p>
+				
+				<div class="media-body">
+				<h5 class="mt-0 mb-1" id="tab0"></h5>
+					<p id="desc0"></p>
+				</div>
+			</li>
+			<li class="media">
+				
+				<div class="media-body">
+				<h5 class="mt-0 mb-1" id="tab1"></h5>
+					<p id="desc1"></p>
+				</div>
+			</li>
+				<li class="media">
+				
+				<div class="media-body">
+				<h5 class="mt-0 mb-1" id="tab2"></h5>
+					<p id="desc2"></p>
+				</div>
+			</li>
+			<li class="media">
+				
+				<div class="media-body">
+				<h5 class="mt-0 mb-1" id="tab3"></h5>
+					<p id="desc3"></p>
+				</div>
+			</li>
+			<li class="media">
+				
+				<div class="media-body">
+				<h5 class="mt-0 mb-1" id="tab4"></h5>
+					<p id="desc4"></p>
+				</div>
+			</li>
+				
+			</ul>
 			</div>
-		  </li>
-		<li class="media">
 			
-			<div class="media-body">
-			  <h5 class="mt-0 mb-1" id="tab3"></h5>
-				<p id="desc3"></p>
-			</div>
-		  </li>
-		<li class="media">
-			
-			<div class="media-body">
-			  <h5 class="mt-0 mb-1" id="tab4"></h5>
-				<p id="desc4"></p>
-			</div>
-		  </li>
-			
-		</ul>
 		</div>
 		
-	  </div>
-    
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    
+		<!--Load the API from the specified URL
+		* The async attribute allows the browser to render the page while the API loads
+		* The key parameter will contain your own API key (which is not needed for this tutorial)
+		* The callback parameter executes the initMap() function
+		-->
+		</div>
   </body>
 </html>
